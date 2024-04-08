@@ -1,0 +1,5 @@
+pytest
+safetensors[torch]
+pyright
+ruff
+ruff-lsp

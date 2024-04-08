@@ -1,0 +1,24 @@
+[[language]]
+name = "c"
+file-types = ["h", "c"]
+auto-format = true
+
+[[language]]
+name = "python"
+roots = [".git"]
+language-servers = ["pyright", "ruff"]
+auto-format = true
+
+[language.formatter]
+command = "sh"
+args = ["-c", "ruff format - | ruff check --fix -"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.ruff]
+command = "ruff-lsp"
+
+[language-server.ruff.config]
+settings = { run = "onSave" }
