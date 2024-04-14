@@ -1,10 +1,10 @@
-all: safetensors.so
+all: libsafetensors.so example
 
-safetensors.so: safetensors.h safetensors.c
+libsafetensors.so: safetensors.h safetensors.c
 	clang -std=c99 -shared -o $@ safetensors.c
 
-example: safetensors.so tests/example.c
-	clang -std=c99 tests/example.c -o example safetensors.so
+example: libsafetensors.so tests/example.c
+	clang -std=c99 tests/example.c -o $@ libsafetensors.so
 
 test:
 	pytest
@@ -13,4 +13,4 @@ format:
 	clang-format -i safetensors.h safetensors.c
 
 clean:
-	rm -rf safetensors.so
+	rm -rf libsafetensors.so example

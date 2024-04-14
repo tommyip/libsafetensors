@@ -5,13 +5,13 @@ auto-format = true
 
 [[language]]
 name = "python"
-roots = [".git"]
+roots = ["requirements.txt"]
 language-servers = ["pyright", "ruff"]
 auto-format = true
 
 [language.formatter]
 command = "sh"
-args = ["-c", "ruff format - | ruff check --fix -"]
+args = ["-c", "ruff format --config tests/pyproject.toml - | ruff check --config tests/pyproject.toml --fix -"]
 
 [language-server.pyright]
 command = "pyright-langserver"
